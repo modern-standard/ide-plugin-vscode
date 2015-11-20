@@ -1,2 +1,2 @@
-# vscode-eslint
-VSCode extension to integrate eslint into VSCode
+# vscode-standardjs
+VSCode extension to integrate standardjs into VSCode
