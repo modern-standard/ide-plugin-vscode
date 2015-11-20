@@ -17,7 +17,7 @@ import fs = require('fs');
 import path = require('path');
 
 interface Settings {
-	eslint: {
+	standard: {
 		enable: boolean;
 		options: any;
 	}
@@ -84,9 +84,9 @@ documents.onDidChangeContent((event) => {
 
 connection.onInitialize((params): Thenable<InitializeResult | ResponseError<InitializeError>> => {
 	let rootPath = params.rootPath;
-	return Files.resolveModule(rootPath, 'eslint').then((value): InitializeResult | ResponseError<InitializeError> => {
-		if (!value.CLIEngine) {
-			return new ResponseError(99, 'The eslint library doesn\'t export a CLIEngine. You need at least eslint@1.0.0', { retry: false });
+	return Files.resolveModule(rootPath, 'standard').then((value): InitializeResult | ResponseError<InitializeError> => {
+		if (!value.lintText) {
+			return new ResponseError(99, 'The standard library doesn\'t export a lintText property.', { retry: false });
 		}
 		lib = value;
 		let result: InitializeResult = { capabilities: { textDocumentSync: documents.syncKind }};
@@ -94,7 +94,7 @@ connection.onInitialize((params): Thenable<InitializeResult | ResponseError<Init
 	}, (error) => {
 		return Promise.reject(
 			new ResponseError<InitializeError>(99,
-				'Failed to load eslint library. Please install eslint in your workspace folder using \'npm install eslint\' and then press Retry.',
+				'Failed to load standard library. Please install standard in your workspace folder using \'npm install standard\' and then press Retry.',
 				{ retry: true }));
 	});
 })
@@ -114,24 +114,25 @@ function getMessage(err: any, document: ITextDocument): string {
 }
 
 function validate(document: ITextDocument): void {
-	let CLIEngine = lib.CLIEngine;
-	var cli = new CLIEngine(options);
 	let content = document.getText();
 	let uri = document.uri;
-	let report: ESLintReport = cli.executeOnText(content, Files.uriToFilePath(uri));
-	let diagnostics: Diagnostic[] = [];
-	if (report && report.results && Array.isArray(report.results) && report.results.length > 0) {
-		let docReport = report.results[0];
-		if (docReport.messages && Array.isArray(docReport.messages)) {
-			docReport.messages.forEach((problem) => {
-				if (problem) {
-					diagnostics.push(makeDiagnostic(problem));
-				}
-			});
+	lib.lintText(content, function (error, results) {
+		let report: ESLintReport = results
+		let diagnostics: Diagnostic[] = [];
+		if (report && report.results && Array.isArray(report.results) && report.results.length > 0) {
+			let docReport = report.results[0];
+			if (docReport.messages && Array.isArray(docReport.messages)) {
+				docReport.messages.forEach((problem) => {
+					if (problem) {
+						diagnostics.push(makeDiagnostic(problem));
+					}
+				});
+			}
 		}
-	}
-	// Publish the diagnostics
-	return connection.sendDiagnostics({ uri, diagnostics });
+		// Publish the diagnostics
+		return connection.sendDiagnostics({ uri, diagnostics });
+	});
+
 }
 
 function validateSingle(document: ITextDocument): void {
@@ -156,8 +157,8 @@ function validateMany(documents: ITextDocument[]): void {
 
 connection.onDidChangeConfiguration((params) => {
 	settings = params.settings;
-	if (settings.eslint) {
-		options = settings.eslint.options || {};
+	if (settings.standard) {
+		options = settings.standard.options || {};
 	}
 	// Settings have changed. Revalidate all documents.
 	validateMany(documents.all());

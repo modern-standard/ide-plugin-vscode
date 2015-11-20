@@ -1,22 +1,22 @@
 {
-	"name": "vscode-eslint",
-	"displayName": "ESLint",
-	"description": "Use ESLint to lint JavaScript files.",
-	"version": "0.10.4",
-	"author": "Microsoft Corporation",
+	"name": "vscode-standardjs",
+	"displayName": "standardjs",
+	"description": "Use standardjs to lint JavaScript files.",
+	"version": "0.0.1",
+	"author": "Sam Chen",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/Microsoft/vscode-eslint.git"
+		"url": "https://github.com/chenxsan/vscode-standardjs.git"
 	},
 	"bugs": {
-		"url": "https://github.com/Microsoft/vscode-eslint/issues"
+		"url": "https://github.com/chenxsan/vscode-standardjs/issues"
 	},
-	"publisher": "dbaeumer",
-	"icon": "eslint_icon.svg",
+	"publisher": "chenxsan",
+	"icon": "standard_icon.svg",
 	"categories": [
 		"Linters"
-	],	
+	],
 	"engines": {
 		"vscode": "0.10.x"
 	},
@@ -27,17 +27,17 @@
 	"contributes": {
 		"configuration": {
 			"type": "object",
-			"title": "ESLint configuration",
+			"title": "standardjs configuration",
 			"properties": {
-				"eslint.enable": {
+				"standard.enable": {
 					"type": "boolean",
 					"default": true,
-					"description": "Control whether eslint is enabled for JavaScript files or not."
+					"description": "Control whether standardjs is enabled for JavaScript files or not."
 				},
-				"eslint.options": {
+				"standard.options": {
 					"type": "object",
 					"default": {},
-					"description": "The eslint options object to provide args to the eslint command."
+					"description": "The standard options object to provide args to the standard command."
 				}
 			}
 		}

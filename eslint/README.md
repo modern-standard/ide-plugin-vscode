@@ -1,3 +1,3 @@
-# VSCode ESLint extension
+# VSCode standardjs extension
 
-Extension to add eslint support to VSCode.
+Extension to add standardjs support to VSCode.

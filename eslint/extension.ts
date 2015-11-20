@@ -22,11 +22,10 @@ export function activate(context: ExtensionContext) {
 	let clientOptions: LanguageClientOptions = {
 		documentSelector: ['javascript', 'javascriptreact'],
 		synchronize: {
-			configurationSection: 'eslint',
-			fileEvents: workspace.createFileSystemWatcher('**/.eslintrc')
+			configurationSection: 'standard'
 		}
 	}
 
 	let client = new LanguageClient('ES Linter', serverOptions, clientOptions);
-	context.subscriptions.push(new SettingMonitor(client, 'eslint.enable').start());
+	context.subscriptions.push(new SettingMonitor(client, 'standard.enable').start());
 }

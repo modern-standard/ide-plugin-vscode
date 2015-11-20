@@ -1,3 +1,3 @@
-# VSCode ESLint extension - server part
+# VSCode standardjs extension - server part
 
-The server part of the VSCode eslint extension.
+The server part of the VSCode standardjs extension.
