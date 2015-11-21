@@ -22,10 +22,11 @@ export function activate(context: ExtensionContext) {
 	let clientOptions: LanguageClientOptions = {
 		documentSelector: ['javascript', 'javascriptreact'],
 		synchronize: {
-			configurationSection: 'standard'
+			configurationSection: 'standard',
+      		fileEvents: workspace.createFileSystemWatcher('package.json')
 		}
 	}
 
-	let client = new LanguageClient('ES Linter', serverOptions, clientOptions);
+	let client = new LanguageClient('Standard Linter', serverOptions, clientOptions);
 	context.subscriptions.push(new SettingMonitor(client, 'standard.enable').start());
 }

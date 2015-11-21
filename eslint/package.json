@@ -2,7 +2,7 @@
 	"name": "vscode-standardjs",
 	"displayName": "standardjs",
 	"description": "Use standardjs to lint JavaScript files.",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"author": "Sam Chen",
 	"license": "MIT",
 	"repository": {

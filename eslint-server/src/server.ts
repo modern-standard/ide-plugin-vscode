@@ -116,7 +116,7 @@ function getMessage(err: any, document: ITextDocument): string {
 function validate(document: ITextDocument): void {
 	let content = document.getText();
 	let uri = document.uri;
-	lib.lintText(content, function (error, results) {
+	lib.lintText(content, options, function (error, results) {
 		let report: ESLintReport = results
 		let diagnostics: Diagnostic[] = [];
 		if (report && report.results && Array.isArray(report.results) && report.results.length > 0) {
