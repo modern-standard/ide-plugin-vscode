@@ -1,6 +1,6 @@
 # vscode-standardjs
 
-VSCode extension to integrate standardjs into VSCode
+VSCode extension to integrate [standardjs](https://github.com/feross/standard) into VSCode.
 
 ## Options
 
