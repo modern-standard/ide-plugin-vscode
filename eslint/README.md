@@ -1,3 +1,3 @@
-# VSCode standardjs extension
+# VS Code standardjs extension
 
-Extension to add standardjs support to VSCode.
+Extension to add standardjs support to VS Code.
