@@ -15,3 +15,11 @@ VSCode extension to integrate [standardjs](https://github.com/feross/standard) i
 You can config standard in visual studio code `settings.json` file:
 
 ![standardjs options](config-standard-options.png)
+
+You might also need to set `javascript.validate.enable` to false in `settings.json` file, it would disable the default javascript validatation shipped with VS Code.
+
+```
+{
+	"javascript.validate.enable": false
+}
+```
