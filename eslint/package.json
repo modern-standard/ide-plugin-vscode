@@ -1,18 +1,18 @@
 {
-	"name": "vscode-standardjs",
+	"name": "modern-standard-ide-plugin-vscode",
 	"displayName": "standardjs",
 	"description": "Use standardjs to lint JavaScript files.",
-	"version": "0.0.5",
-	"author": "Sam Chen",
+	"version": "0.0.1",
+	"author": "Kevin Grandon",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/chenxsan/vscode-standardjs.git"
+		"url": "https://github.com/modern-standard/ide-plugin-vscode.git"
 	},
 	"bugs": {
-		"url": "https://github.com/chenxsan/vscode-standardjs/issues"
+		"url": "https://github.com/modern-standard/ide-plugin-vscode/issues"
 	},
-	"publisher": "chenxsan",
+	"publisher": "KevinGrandon",
 	"icon": "standard_icon.svg",
 	"categories": [
 		"Linters"

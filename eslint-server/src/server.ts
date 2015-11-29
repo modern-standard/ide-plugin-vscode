@@ -84,9 +84,9 @@ documents.onDidChangeContent((event) => {
 
 connection.onInitialize((params): Thenable<InitializeResult | ResponseError<InitializeError>> => {
 	let rootPath = params.rootPath;
-	return Files.resolveModule(rootPath, 'standard').then((value): InitializeResult | ResponseError<InitializeError> => {
+	return Files.resolveModule(rootPath, 'modern-standard').then((value): InitializeResult | ResponseError<InitializeError> => {
 		if (!value.lintText) {
-			return new ResponseError(99, 'The standard library doesn\'t export a lintText property.', { retry: false });
+			return new ResponseError(99, 'The modern-standard library doesn\'t export a lintText property.', { retry: false });
 		}
 		lib = value;
 		let result: InitializeResult = { capabilities: { textDocumentSync: documents.syncKind }};
@@ -94,7 +94,7 @@ connection.onInitialize((params): Thenable<InitializeResult | ResponseError<Init
 	}, (error) => {
 		return Promise.reject(
 			new ResponseError<InitializeError>(99,
-				'Failed to load standard library. Please install standard in your workspace folder using \'npm install standard\' and then press Retry.',
+				'Failed to load modern-standard library. Please install standard in your workspace folder using \'npm install standard\' and then press Retry.',
 				{ retry: true }));
 	});
 })

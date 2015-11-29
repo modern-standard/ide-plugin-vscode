@@ -5,10 +5,10 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/chenxsan/vscode-standardjs.git"
+		"url": "https://github.com/modern-standard/ide-plugin-vscode.git"
 	},
 	"bugs": {
-		"url": "https://github.com/chenxsan/vscode-standardjs/issues"
+		"url": "https://github.com/modern-standard/ide-plugin-vscode/issues"
 	},
 	"engines": {
 		"node": "*"
