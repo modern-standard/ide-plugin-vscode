@@ -1,7 +1,7 @@
 {
 	"name": "modern-standard-ide-plugin-vscode",
 	"displayName": "standardjs",
-	"description": "Use standardjs to lint JavaScript files.",
+	"description": "Use modern-standard to lint JavaScript files.",
 	"version": "0.0.1",
 	"author": "Kevin Grandon",
 	"license": "MIT",
@@ -27,7 +27,7 @@
 	"contributes": {
 		"configuration": {
 			"type": "object",
-			"title": "standardjs configuration",
+			"title": "modern- configuration",
 			"properties": {
 				"standard.enable": {
 					"type": "boolean",
